@@ -1,0 +1,12 @@
+* User
+  user_id
+** get_game
+   latest
+* Game
+  id, content, result, player
+** save
+   output_file
+** analyse
+** download
+* process_games
+  user,  total,latest,download_only,skip
