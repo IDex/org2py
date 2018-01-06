@@ -10,3 +10,6 @@
 ** download
 * process_games
   user,  total,latest,download_only,skip
+** inner_function
+* another_function
+argument
