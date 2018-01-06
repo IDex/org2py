@@ -12,7 +12,7 @@ optional arguments:
   -o OUTPUT, --output OUTPUT
                         Output file for the generated code, by default STDOUT.
   -i INDENT, --indent INDENT
-                        Indentation for generated code, by default " ".
+                        Indentation for generated code (e.g. " "), by default 4 spaces.
   -m, --main            Add "if __name__" boilerplate to the end, by default off.
 ```
 ## Installation
