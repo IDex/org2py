@@ -1,3 +1,4 @@
+#!/bin/env python3
 from collections import deque
 import argparse
 

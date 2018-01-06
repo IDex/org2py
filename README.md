@@ -16,8 +16,11 @@ optional arguments:
   -m, --main            Add "if __name__" boilerplate to the end, by default off.
 ```
 ## Installation
+Requires Python 3.6 or later
 ```
-git clone 
+git clone https://github.com/IDex/org2py.git
+cd org2py
+pip install .
 ```
 ## Example usage
 
