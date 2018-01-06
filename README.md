@@ -2,7 +2,7 @@
 ```
 usage: org2py [-h] [-o OUTPUT] [-i INDENT] [-m] input
 
-Generates Python class/function stumps from an Org file.
+Generates Python class/function stubs from an Org file.
 
 positional arguments:
   input                 Org file to parse.
