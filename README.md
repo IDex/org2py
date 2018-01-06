@@ -16,9 +16,12 @@ optional arguments:
   -m, --main            Add "if __name__" boilerplate to the end, by default off.
 ```
 ## Format interpretation
-* Lines starting with star are either classes, methods, or functions.
-..* If the first letter is capitalized the line is interpreted as a class.
-..* If a function is under a class it's a method.
+* The lines starting with a star are either classes, methods, or functions.
+
+    * If the first letter is capitalized the line is interpreted as a class.
+
+    * If a function is under a class it's a method.
+
 * Lines without a star are interpreted as a comma-separated list of parameters for above class/function.
 ## Installation
 Requires Python 3.6 or later (Uses f-strings).
@@ -51,9 +54,9 @@ argument
 ```
 ### Command used
 ```
-[ide@ide-g500 org2py]$ org2py outline.org --main --indent "  "
+org2py outline.org --main --indent "  "
 ```
-### Python code
+### Resulting Python code
 ```
 
 
