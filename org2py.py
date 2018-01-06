@@ -12,7 +12,7 @@ class OrgNode:
         if self.level == 0:
             self.attributes = self.parse_attributes(line)
         else:
-            self.attributes = ''
+            self.attributes = []
 
     def add_child(self, node):
         self.children.append(node)
@@ -20,8 +20,11 @@ class OrgNode:
     def parse_attributes(self, line):
         return [attribute.strip() for attribute in line.split(',')]
 
+    def is_class(self):
+        return self.name[0].isupper()
+
     def to_string(self):
-        if self.name[0].isupper():
+        if self.is_class():
             string = self.class_string()
         else:
             string = self.function_string()
@@ -83,8 +86,10 @@ class OrgTree:
         for line in self.content:
             node = OrgNode(line, indent=indent)
             if node.level == 0:
-                previous_node.attributes = node.attributes
+                previous_node.attributes.extend(node.attributes)
                 continue
+            if parents_by_level[node.level - 1].is_class() and not node.is_class():
+                node.attributes.append('self')
             parents_by_level[node.level - 1].add_child(node)
             parents_by_level.insert(node.level, node)
             previous_node = node
