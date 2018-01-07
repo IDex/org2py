@@ -92,8 +92,7 @@ class OrgTree:
             if node.level == 0:
                 previous_node.attributes.extend(node.attributes)
                 continue
-            if parents_by_level[node.level -
-                                1].is_class() and not node.is_class():
+            if parents_by_level[node.level - 1].is_class() and not node.is_class():
                 node.attributes.append('self')
             parents_by_level[node.level - 1].add_child(node)
             parents_by_level.insert(node.level, node)
