@@ -22,7 +22,10 @@ optional arguments:
 
     * If a function is under a class it's a method.
 
-* Lines without a star are interpreted as a comma-separated list of parameters for above class/function.
+* First line without a leading star is a comma-separated list of imports,
+
+    * Other lines without a leading star are interpreted as a comma-separated list of parameters for above class/function.
+
 ## Installation
 Requires Python 3.6 or later (Uses f-strings).
 ```
@@ -36,6 +39,7 @@ Following is an example of the kind of code the script generates.
 
 ### Org file
 ```
+scipy as sc,seaborn as sns, pandas as pd
 * User
   user_id
 ** get_game
@@ -58,6 +62,9 @@ org2py outline.org --main --indent "  "
 ```
 ### Resulting Python code
 ```
+import scipy as sc                                            
+import seaborn as sns
+import pandas as pd
 
 
 class User:

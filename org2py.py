@@ -39,6 +39,10 @@ class OrgNode:
         return f"""{self.blank_lines()}{(self.level-1)*self.indent}def {self.name}({', '.join(self.attributes)}):
 {(self.level)*self.indent}pass"""
 
+    def import_string(self):
+        return '\n'.join(
+            [f'import {attribute}' for attribute in self.attributes[1:]])
+
     def blank_lines(self):
         if self.level <= 1:
             return '\n\n'
@@ -88,7 +92,8 @@ class OrgTree:
             if node.level == 0:
                 previous_node.attributes.extend(node.attributes)
                 continue
-            if parents_by_level[node.level - 1].is_class() and not node.is_class():
+            if parents_by_level[node.level -
+                                1].is_class() and not node.is_class():
                 node.attributes.append('self')
             parents_by_level[node.level - 1].add_child(node)
             parents_by_level.insert(node.level, node)
@@ -100,7 +105,12 @@ class OrgTree:
         self.code.append(f"""{self.root.blank_lines()}if __name__ == '__main__':
 {self.root.indent*1}main()""")
 
+    def add_imports(self):
+        if len(self.root.attributes) > 1:
+            self.code.append(self.root.import_string())
+
     def parse(self, main=False):
+        self.add_imports()
         children = deque(self.root.children[::-1])
         while children:
             child = children.pop()
@@ -114,7 +124,9 @@ class OrgTree:
 def main():
     parser = argparse.ArgumentParser(
         description='Generates Python class/function stumps from an Org file.')
-    parser.add_argument('input', help='Org file to parse.')
+    parser.add_argument(
+        'input', help='Org file to parse.')
+        # '--input', default='outline.org', help='Org file to parse.')
     parser.add_argument(
         '-o',
         '--output',
