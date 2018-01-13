@@ -56,7 +56,7 @@ class OrgNode:
                 for attribute in self.attributes
             ])
         else:
-            return "{(self.level+1)*self.indent}pass"
+            return f"{(self.level+1)*self.indent}pass"
 
     def count_level(self, line):
         return sum([1 for char in line if char == '*'])
