@@ -22,7 +22,7 @@ optional arguments:
 
     * If a function is under a class it's a method.
 
-* First line without a leading star is a comma-separated list of imports,
+* If the first line doesn't have a leading star it's considered a comma-separated list of imports.
 
     * Other lines without a leading star are interpreted as a comma-separated list of parameters for above class/function.
 
